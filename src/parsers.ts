@@ -6,7 +6,19 @@ export const natural = (val: string) => {
 
   if (!Number.isSafeInteger(num) || num < 1) {
     throw new InvalidOptionArgumentError(
-      'Must be integer value greater than zero',
+      'Must be integer value greater than zero (JS safe integer)',
+    )
+  }
+
+  return num
+}
+
+export const uint = (val: string) => {
+  const num = Number(val)
+
+  if (!Number.isSafeInteger(num) || num < 0) {
+    throw new InvalidOptionArgumentError(
+      'Must be integer value greater or equal to zero (JS safe integer)',
     )
   }
 
